@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel_sanctum/providers/auth.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -13,12 +15,17 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? _email;
   String? _password;
+  void sumbit() {
+    Provider.of<Auth>(context, listen: false)
+        .login(credentials: {'email': _email, 'password': _password});
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Login Screen'),
+          title: const Text('Login Screen'),
         ),
         body: Form(
             key: _formKey,
@@ -58,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (_formKey.currentState!.validate()) {
                           log(_email!);
                           log(_password!);
+                          sumbit();
                         }
                       },
                       child: const Text('Login'))
