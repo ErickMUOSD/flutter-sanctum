@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel_sanctum/screens/login_screen.dart';
 import 'package:flutter_laravel_sanctum/screens/post_screen.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -18,6 +19,15 @@ class NavDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => PostScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Login'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
               );
             },
           )
