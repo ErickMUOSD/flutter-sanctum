@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onSaved: (value) {
                       _email = value;
                     },
+                    initialValue: 'erick@gmail.com',
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter some email';
@@ -52,6 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onSaved: (value) {
                       _password = value;
                     },
+                    initialValue: 'password',
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter some password';
