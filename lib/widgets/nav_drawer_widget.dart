@@ -13,8 +13,8 @@ class NavDrawer extends StatelessWidget {
       if (auth.authenticated) {
         return ListView(
           children: [
-            const ListTile(
-              title: Text('Name here'),
+            ListTile(
+              title: Text(auth.userObject!.name.toString()),
             ),
             ListTile(
               title: const Text('Posts'),
