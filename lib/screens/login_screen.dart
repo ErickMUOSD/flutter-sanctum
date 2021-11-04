@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
             key: _formKey,
             child: Scrollbar(
                 child: SingleChildScrollView(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
                   TextFormField(
