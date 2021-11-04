@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_laravel_sanctum/providers/auth.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? _email;
   String? _password;

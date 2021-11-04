@@ -5,8 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_laravel_sanctum/models/user.dart';
 import 'package:flutter_laravel_sanctum/services/dio.dart';
 import 'package:platform_device_id/platform_device_id.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Auth extends ChangeNotifier {
+  final storage = new FlutterSecureStorage();
+
   bool _authenticated = false;
   User? _user;
   bool get authenticated => _authenticated;
@@ -14,11 +17,13 @@ class Auth extends ChangeNotifier {
 
   Future login({required Map<String, dynamic> credentials}) async {
     String deviceId = await getDeviceId();
-    print(deviceId);
+    print('devide id:' + deviceId);
     Dio.Response response = await dio().post('auth/token',
         data: json.encode(credentials..addAll({'deviceId': deviceId})));
     String token = json.decode(response.toString())['token'];
+    print(token);
     await attempt(token);
+    storeToken(token);
   }
 
   Future attempt(String token) async {
@@ -28,8 +33,10 @@ class Auth extends ChangeNotifier {
           options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
       _user = User.fromJson(jsonDecode(response.toString()));
       _authenticated = true;
+      print(_user);
     } catch (e) {
       _authenticated = false;
+      print('didnt get data from user');
     }
     notifyListeners();
   }
@@ -42,6 +49,10 @@ class Auth extends ChangeNotifier {
     } catch (e) {
       _authenticated = false;
     }
+  }
+
+  Future storeToken(String token) async {
+    await storage.write(key: 'auth', value: token);
   }
 
   void logout() {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PostScreen extends StatefulWidget {
-  PostScreen({Key? key}) : super(key: key);
+class PostPage extends StatefulWidget {
+  PostPage({Key? key}) : super(key: key);
 
   @override
-  _PostScreenState createState() => _PostScreenState();
+  _PostPageState createState() => _PostPageState();
 }
 
-class _PostScreenState extends State<PostScreen> {
+class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

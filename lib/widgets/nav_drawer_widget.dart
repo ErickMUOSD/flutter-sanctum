@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel_sanctum/providers/auth.dart';
-import 'package:flutter_laravel_sanctum/screens/login_screen.dart';
-import 'package:flutter_laravel_sanctum/screens/post_screen.dart';
+import 'package:flutter_laravel_sanctum/screens/login_page.dart';
+import 'package:flutter_laravel_sanctum/screens/post_page.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -21,7 +21,7 @@ class NavDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PostScreen()),
+                  MaterialPageRoute(builder: (context) => PostPage()),
                 );
               },
             ),
@@ -48,7 +48,7 @@ class NavDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
+                MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
           ),
