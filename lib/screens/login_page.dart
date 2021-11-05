@@ -65,8 +65,6 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         _formKey.currentState!.save();
                         if (_formKey.currentState!.validate()) {
-                          log(_email!);
-                          log(_password!);
                           sumbit();
                         }
                       },

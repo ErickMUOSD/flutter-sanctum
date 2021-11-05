@@ -8,7 +8,7 @@ import 'package:platform_device_id/platform_device_id.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Auth extends ChangeNotifier {
-  final storage = new FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   bool _authenticated = false;
   User? _user;
@@ -33,7 +33,6 @@ class Auth extends ChangeNotifier {
           options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
       _user = User.fromJson(jsonDecode(response.toString()));
       _authenticated = true;
-      print(_user);
     } catch (e) {
       _authenticated = false;
       print('didnt get data from user');
@@ -53,6 +52,10 @@ class Auth extends ChangeNotifier {
 
   Future storeToken(String token) async {
     await storage.write(key: 'auth', value: token);
+  }
+
+  Future getToken() async {
+    return await storage.read(key: 'auth');
   }
 
   void logout() {

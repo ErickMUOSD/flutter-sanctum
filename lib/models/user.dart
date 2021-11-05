@@ -2,7 +2,7 @@ class User {
   int? id;
   String? name;
   String? email;
-
+   
   User({this.id, this.name, this.email});
 
   // User.fromJsonMap(Map<String, dynamic> json) {
@@ -15,6 +15,7 @@ class User {
       id: json['id'],
       name: json['name'],
       email: json['email'],
+      
     );
   }
 }
