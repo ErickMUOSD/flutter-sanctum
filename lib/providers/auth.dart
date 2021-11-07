@@ -63,7 +63,7 @@ class Auth extends ChangeNotifier {
   }
 
   void logout() async {
-    dio().delete('auth/token',
+    await dio().delete('auth/token',
         data: {'deviceId': await getDeviceId()},
         options: Dio.Options(headers: {'auth': true}));
     deleteLocalToken();
